@@ -1,0 +1,36 @@
+<html>
+  <div>
+    <checkbox
+      :label="label"
+      :checked="true"
+      :disabled="visible"
+      :value="'Checkbox'"
+      @change="onChange"
+    />
+    <button
+      @click="visible = !visible"
+    > {{ visible ? 'visible' : 'invisible' }}</button>
+    {{ valueData }}
+  </div>
+</html>
+
+<script>
+  export default {
+    components: {
+      checkbox,
+    },
+    data() {
+      return {
+        visible: true,
+        label: 'test',
+        valueData: null,
+        buttonLabel: 'visible',
+      };
+    },
+    methods: {
+      onChange(value) {
+        this.valueData = value;
+      },
+    },
+  };
+</script>
