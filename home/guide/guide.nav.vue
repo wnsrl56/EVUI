@@ -28,33 +28,31 @@
     },
     data() {
       return {
+        pathName: '/guide/',
         beforeSelectedTarget: null,
         menu: [
           {
             text: 'Form',
             children: [
               { text: 'Checkbox', component: 'checkbox/checkbox', icon: 'fa-check-square' },
-              { text: 'Radiobox', component: 'radiobox', icon: 'fa-check-circle' },
-              { text: 'Select', component: 'selectbox', icon: 'fa-caret-down' },
-              { text: 'Button', component: 'button' },
+              // { text: 'Radiobox', component: 'radiobox', icon: 'fa-check-circle' },
+              { text: 'Select', component: 'selectbox/selectbox', icon: 'fa-caret-down' },
+              // { text: 'Button', component: 'button' },
             ],
           },
           {
             text: 'Layer',
             children: [
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
+              // { text: 'Checkbox', component: 'checkbox' },
+              // { text: 'Checkbox', component: 'checkbox' },
+              // { text: 'Checkbox', component: 'checkbox' },
+              // { text: 'Checkbox', component: 'checkbox' },
             ],
           },
           {
             text: 'Chart',
             children: [
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
-              { text: 'Checkbox', component: 'checkbox' },
+              { text: 'Line', component: 'chart/line' },
             ],
           },
           {
@@ -77,10 +75,10 @@
         const target = e.target;
         if (target.tagName === 'LI') {
           if (target.classList.contains('selected')) {
-            target.classList.remove('selected');
-          } else {
-            target.classList.add('selected');
+            return;
           }
+
+          target.classList.add('selected');
 
           if (this.beforeSelectedTarget) {
             this.beforeSelectedTarget.classList.remove('selected');
@@ -91,7 +89,7 @@
           this.$router.forward({
             path: this.$router.getFragment(),
             param: target.dataset.component,
-          }, target.dataset.component, `./${target.dataset.component}`);
+          }, target.dataset.component, `/${this.pathName}${target.dataset.component}`);
         }
       },
     },

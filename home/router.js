@@ -4,7 +4,8 @@ const Router = {
   root: '/',
   listen() {
     if (this.mode === 'history') {
-      window.addEventListener('pushstate', this.check.bind(this));
+      window.addEventListener('popstate', this.check.bind(this));
+      // window.addEventListener('onpopstate', this.check.bind(this));
     } else {
       window.addEventListener('hashchange', this.check.bind(this));
     }

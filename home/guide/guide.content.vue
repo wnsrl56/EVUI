@@ -6,10 +6,12 @@
 </template>
 <script>
   import checkbox from './checkbox/main';
+  import chart from './chart/main';
 
   export default {
     components: {
       checkbox,
+      chart,
     },
     data() {
       return {
