@@ -22,6 +22,9 @@
           <router-link to="/selectbox">Selectbox</router-link>
         </li>
         <li>
+          <router-link to="/dialog">Dialog</router-link>
+        </li>
+        <li>
           <router-link to="/table">Table(page)</router-link>
         </li>
         <li>
