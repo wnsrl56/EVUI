@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import _ from 'lodash';
 
-class Alarmchart {
+class Alertlogchart {
   constructor(target, options) {
     const obj = {
       // default width, height(onePage)
@@ -16,6 +16,12 @@ class Alarmchart {
     this.baseCanvas = document.createElement('canvas');
     this.baseCanvas.setAttribute('class', 'evui-alarmchart-canvas');
     this.context = this.baseCanvas.getContext('2d');
+    let image = new Image();
+    image.src = '../../images/evui_icon.png';
+    image.onload = function() {
+      this.context.drawImage(image, 0, 0);
+    };
+
 
     // init coordinate obj
     this.coordinate = {
@@ -123,4 +129,4 @@ class Alarmchart {
   }
 }
 
-export default Calendar;
+export default Alertlogchart;

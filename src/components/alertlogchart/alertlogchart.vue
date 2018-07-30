@@ -1,15 +1,15 @@
 <template>
-  <div>
-    1
-  </div>
+  <div
+    ref="alertlogchartRef"
+    class="evui-alertlogchart"
+  />
 </template>
 
 <script>
-  import alarmchart from '@/components/alertlogchart/alertlogchart.core';
+  import Alarmchart from '@/components/alertlogchart/alertlogchart.core';
 
   export default {
     components: {
-      alarmchart,
     },
     directives: {
       // 해당 element 외의 클릭 시
@@ -43,6 +43,12 @@
           return null;
         },
       },
+      alertlogOptions: {
+        type: Object,
+        default() {
+          return {};
+        },
+      },
     },
     data() {
       return {
@@ -53,6 +59,8 @@
     created() {
     },
     mounted() {
+      const mergeOption = this.$props.alertlogOptions;
+      this.alertlogchart = new Alarmchart(this.$refs.alertlogchartRef, mergeOption);
     },
     beforeDestroy() {
     },
@@ -62,26 +70,6 @@
 </script>
 
 <style scoped>
-  .evui-datepicker {
-    width: 235px;
-  }
-  .evui-datepicker-input {
-    width: 235px;
-    height: 32px;
-    line-height: 32px;
-  }
-  .evui-datepicker-input-wrapper {
-    width: 235px;
-    height: 32px;
-  }
-  .evui-calendar-wrapper {
-    position: absolute;
-    width: 235px;
-    height: 0px;
-    overflow: hidden;
-    transition: height .3s ease-in-out;
-  }
-  .evui-calendar-wrapper.expand {
-    width: 470px;
+  .evui-alertlogchart {
   }
 </style>

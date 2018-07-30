@@ -135,6 +135,12 @@
                 content: '파이 차트',
                 imgUrl: `${this.imgUrl}/chart-pie.png`,
               },
+              {
+                name: 'Alert Log Chart',
+                routerLink: '/alertlogchart',
+                content: 'Aler Log 차트',
+                imgUrl: `${this.imgUrl}/chart-pie.png`,
+              },
             ],
           },
           {

@@ -48,7 +48,7 @@ module.exports = merge(webpackBaseConfig, {
     inline: true,
     host: '0.0.0.0',
     disableHostCheck: true,
-    port: '8888',
+    port: '9999',
     compress: false,
   },
   plugins: [
