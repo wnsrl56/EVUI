@@ -11,6 +11,9 @@ class Alertlogchart {
       // height: 250,
 
       colors: {
+        chartArea: {
+          text: '#ABAEB5',
+        },
         pageArea: {
           select: '#cccccc',
           deselect: '#777777',
@@ -100,12 +103,13 @@ class Alertlogchart {
     this.options = _.merge({}, obj, options);
 
 
-    // create & init canvas
+    // create & init canvas1
     this.baseCanvas = document.createElement('canvas');
     this.baseCanvas.setAttribute('class', 'evui-alertlog-canvas');
     this.context = this.baseCanvas.getContext('2d');
     this.image = new Image();
-    this.image.src = './guide/images/evui_icon.png';
+    // this.image.src = './guide/images/evui_icon.png'; // npm run home
+    this.image.src = './maxgauge/images/evui_icon.png'; // npm run maxgauge
     this.tooltip = document.createElement('div');
     this.tooltip.setAttribute('class', 'evui-alertlog-tooltip');
 
@@ -492,6 +496,7 @@ class Alertlogchart {
                     fillText: {
                       show: true,
                       text: v.ellipsisName,
+                      color: this.options.colors.chartArea.text,
                     },
                     align: 'center',
                     font: '11px Roboto Condensed',
@@ -522,6 +527,7 @@ class Alertlogchart {
                 fillText: {
                   show: true,
                   text: v.ellipsisName,
+                  color: this.options.colors.chartArea.text,
                 },
                 align: 'center',
                 font: '11px Roboto Condensed',
