@@ -142,9 +142,9 @@
                 imgUrl: `${this.imgUrl}/chart-pie.png`,
               },
               {
-                name: 'Alert Log Chart',
-                routerLink: '/alertlogchart',
-                content: 'Aler Log 차트',
+                name: 'Alert Log',
+                routerLink: '/alertlog',
+                content: 'Aler Log',
                 imgUrl: `${this.imgUrl}/chart-pie.png`,
               },
             ],

@@ -41,8 +41,8 @@ const router = new VueRouter({
       component: resolve => require(['./guide/views/examples/chart/chart-pie-view'], resolve),
     },
     {
-      path: '/alertlogchart',
-      component: resolve => require(['./guide/views/examples/alertlogchart/alertlogchart-view'], resolve),
+      path: '/alertlog',
+      component: resolve => require(['./guide/views/examples/alertlog/alertlog-view'], resolve),
     },
     {
       path: '/checkbox',

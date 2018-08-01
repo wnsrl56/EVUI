@@ -432,7 +432,7 @@
     width: 26px;
     height: 26px;
     margin: 7px 3px 7px 3px;
-    background-image: url(../../images/evui_icon.png);
+    background-image: url(../../../home/guide/images/evui_icon.png);
     background-position: -196px -102px;
   }
 
@@ -442,7 +442,7 @@
     width: 26px;
     height: 10px;
     margin: 15px 3px 15px 3px;
-    background-image: url(../../images/evui_icon.png);
+    background-image: url(../../../home/guide/images/evui_icon.png);
     background-position: 7px -362px;
   }
   .evui-timepicker div.evui-timepicker-suffix.suffix-fadein {

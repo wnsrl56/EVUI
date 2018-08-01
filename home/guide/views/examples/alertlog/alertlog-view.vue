@@ -24,7 +24,7 @@
 
 <script>
   import codeView from '@/components/codeview/code';
-  import alertlogchartDefault from './alertlogchart-default';
+  import alertlogDefault from './alertlog-default';
 
   export default {
     components: {
@@ -34,11 +34,11 @@
       return {
         componentList: [
           {
-            url: './guide/views/examples/alertlogchart/alertlogchart-default.vue',
-            component: alertlogchartDefault,
-            description: `Alert Log Chart입니다.
-            알람 발생(normal, warning, critical)에 따라 알람이 발생합니다.`,
-            title: 'Default - Alert Log Chart',
+            url: './guide/views/examples/alertlog/alertlog-default.vue',
+            component: alertlogDefault,
+            description: `Alert Log 메뉴 입니다.
+            레벨(normal, warning, critical)에 따라 알람이 발생합니다.`,
+            title: 'Default - Alert Log',
           },
         ],
       };
