@@ -2,19 +2,14 @@
   <div
     v-show="toggleFlag"
     ref="alertlogchartRef"
-    class="evui-alertlogchart"
   />
 </template>
 
 <script>
   import Alertlogchart from '@/components/alertlog/alertlogchart.core';
-  import toggle from '@/components/toggle';
-  import Button from '@/components/button';
 
   export default {
     components: {
-      toggle,
-      Button,
     },
     props: {
       value: {
@@ -48,12 +43,21 @@
       const mergeOption = this.$props.alertlogOptions;
       this.alertlogchart = new Alertlogchart(this.$refs.alertlogchartRef, mergeOption);
     },
-    beforeDestroy() {
-    },
     methods: {
     },
   };
 </script>
 
 <style scoped>
+  .evui-alertlog-tooltip {
+    position: absolute;
+    z-index: 100000;
+    color: #000;
+    border-radius: 4px;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    overflow-y: auto;
+    max-height: 500px;
+    padding: 10px;
+  }
 </style>

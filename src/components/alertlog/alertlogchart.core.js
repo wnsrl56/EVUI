@@ -1,5 +1,6 @@
 /*eslint-disable*/
 import _ from 'lodash';
+import Tooltip from './alertlogchart.tooltip';
 
 class Alertlogchart {
   constructor(target, options) {
@@ -56,6 +57,7 @@ class Alertlogchart {
           width: 45,
         },
         circleGap: 15,
+        tooltipUse: true,
       },
       pageArea: {
         width: 30,
@@ -110,9 +112,6 @@ class Alertlogchart {
     this.image = new Image();
     // this.image.src = './guide/images/evui_icon.png'; // npm run home
     this.image.src = './maxgauge/images/evui_icon.png'; // npm run maxgauge
-    this.tooltip = document.createElement('div');
-    this.tooltip.setAttribute('class', 'evui-alertlog-tooltip');
-
 
     // init coordinate obj
     this.coordinate = {
@@ -153,7 +152,11 @@ class Alertlogchart {
     } else {
       target.appendChild(this.baseCanvas);
     }
-    window.document.body.appendChild(this.tooltip);
+
+    // tooltip use
+    if (this.options.chartArea.tooltipUse) {
+      this.tooltip = new Tooltip();
+    }
   }
 
   init() {
@@ -293,7 +296,8 @@ class Alertlogchart {
       e.preventDefault();
       const chartAreaTotal = this.coordinate.chartArea.total;
       const pageAreaTotal = this.coordinate.pageArea.total;
-      let exist = false;
+      let cursorPointer = false;
+      let showTooltip = false;
 
       // chart
       if (e.offsetX > chartAreaTotal.startX
@@ -310,7 +314,8 @@ class Alertlogchart {
           const deltaX = e.offsetX - v.centerX;
           const deltaY = e.offsetY - v.centerY;
           if (+(deltaX * deltaX) + +(deltaY * deltaY) < radius * radius) {
-            exist = true;
+            cursorPointer = true;
+            showTooltip = true;
           }
           // inner label area under circle
           if (e.offsetX > v.startX
@@ -318,7 +323,8 @@ class Alertlogchart {
             && e.offsetY > +v.startY + +diameter
             && e.offsetY < +(+v.startY + +diameter) + +textHeight
           ) {
-            exist = true;
+            cursorPointer = true;
+            showTooltip = true;
           }
         });
       }
@@ -334,22 +340,27 @@ class Alertlogchart {
           const deltaX = e.offsetX - v.centerX;
           const deltaY = e.offsetY - v.centerY;
           if (+(deltaX * deltaX) + +(deltaY * deltaY) < pageRadius * pageRadius) {
-            exist = true;
+            cursorPointer = true;
           }
         });
       }
 
-      if (exist) {
+      if (cursorPointer) {
         this.baseCanvas.style.cursor = 'pointer';
       } else {
         this.baseCanvas.style.cursor = 'default';
+      }
+      if (showTooltip) {
+        this.tooltip.showTooltip();
+      } else {
+        this.tooltip.hideTooltip();
       }
     });
   }
   initMouseleave() {
     this.baseCanvas.addEventListener('mouseleave', (e) => {
       e.preventDefault();
-
+      this.tooltip.hideTooltip();
     });
   }
 
